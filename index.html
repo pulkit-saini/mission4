@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Hunt Quest - Mission 4</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://img.freepik.com/free-vector/vintage-monochrome-treasure-map_225004-986.jpg?semt=ais_hybrid') no-repeat center center fixed;
+            background-size: cover;
+            color: #fc9541;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            width: 80%;
+            max-width: 500px;
+        }
+        .question {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .precaution {
+            background-color: #FFDDC1;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #FF6347;
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #333;
+            text-align: center;
+        }
+        .input-container {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            margin-bottom: 10px;
+            border: 2px solid #6b2323;
+            border-radius: 5px;
+        }
+        button {
+            padding: 12px 20px;
+            font-size: 18px;
+            background-color: #FFD700;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #333;
+        }
+        button:hover {
+            background-color: #f4a261;
+        }
+        .message {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        .correct {
+            color: #00FF00;
+            font-weight: bold;
+        }
+        .incorrect {
+            color: #FF6347;
+            font-weight: bold;
+        }
+        .google-form-link {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="precaution">
+        <p><strong>⚠️ Critical Decryption Required:</strong> The intercepted message has been scrambled. Your task is to decrypt it and enter the correct phrase.</p>
+    </div>
+
+    <div class="question">
+        <p>The intelligence you seek has been encrypted. Only the most skilled agents can decode it.</p>
+        <p>Decrypt the message and submit the correct phrase to proceed.</p>
+    </div>
+
+    <div class="input-container">
+        <input type="text" id="answer" placeholder="Enter decrypted phrase here">
+    </div>
+
+    <button onclick="checkAnswer()">Submit</button>
+
+    <div class="message" id="message"></div>
+    <a id="googleFormLink" class="google-form-link" style="display:none;" href="https://forms.gle/MNWnJ31SncskjJWWA" target="_blank">Click here to proceed to the next task!</a>
+</div>
+
+<script>
+    function checkAnswer() {
+        const answer = document.getElementById('answer').value.trim().replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+        const possibleAnswers = [
+            "themainmysteryisnotwhatyouthinkbutwhatyoufeel", 
+            "themainmysteryisnotwhatyouthinkbutwhatyoufeel", 
+            "themainmysteryisnotwhatyouthinkbutwhatyoufeel.",
+            "themainmysteryisnotwhatyouthinkbutwhatyoufeel!"
+        ];
+
+        const messageElement = document.getElementById('message');
+        const googleFormLink = document.getElementById('googleFormLink');
+
+        if (possibleAnswers.includes(answer)) {
+            messageElement.innerHTML = "🎉 Correct! You have successfully decrypted the message and unlocked the next mission.";
+            messageElement.classList.add("correct");
+            messageElement.classList.remove("incorrect");
+            googleFormLink.style.display = "inline-block";
+        } else {
+            messageElement.innerHTML = "❌ Incorrect decryption. Try again!";
+            messageElement.classList.add("incorrect");
+            messageElement.classList.remove("correct");
+            googleFormLink.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>
